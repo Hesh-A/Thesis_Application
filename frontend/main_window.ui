@@ -1,0 +1,817 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1550</width>
+    <height>728</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* =========================
+   Clinical Theme - Unified Buttons
+   ========================= */
+
+QMainWindow {
+    background-color: #f3f6fa;
+    color: #1f2937;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 11px;
+}
+
+QWidget#centralwidget {
+    background-color: #f3f6fa;
+}
+
+/* Menu + status */
+QMenuBar {
+    background-color: #ffffff;
+    color: #334155;
+    border-bottom: 1px solid #dbe1e8;
+    padding: 1px 6px;
+}
+QMenuBar::item {
+    padding: 5px 8px;
+    border-radius: 3px;
+}
+QMenuBar::item:selected {
+    background-color: #eef2f7;
+}
+QMenu {
+    background-color: #ffffff;
+    color: #334155;
+    border: 1px solid #dbe1e8;
+}
+QMenu::item {
+    padding: 6px 14px;
+}
+QMenu::item:selected {
+    background-color: #eef2f7;
+}
+QStatusBar {
+    background-color: #ffffff;
+    color: #64748b;
+    border-top: 1px solid #dbe1e8;
+}
+
+/* Containers */
+QWidget#sideBar,
+QGroupBox {
+    background-color: #ffffff;
+    border: 1px solid #dbe1e8;
+    border-radius: 4px;
+}
+QGroupBox {
+    margin-top: 10px;
+    padding: 8px;
+    color: #334155;
+    font-weight: 600;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 8px;
+    padding: 0 4px;
+    color: #475569;
+}
+
+
+/* Labels */
+QLabel {
+    color: #475569;
+    font-weight: 600;
+}
+
+/* Lists */
+QListWidget {
+    background-color: #ffffff;
+    border: 1px solid #d6dde6;
+    border-radius: 3px;
+    padding: 2px;
+    outline: none;
+}
+QListWidget::item {
+    padding: 5px 6px;
+    border-radius: 2px;
+    color: #1f2937;
+}
+QListWidget::item:hover {
+    background-color: #f2f5f9;
+}
+QListWidget::item:selected {
+    background-color: #dbe7f7;
+    color: #0f172a;
+}
+
+/* Inputs */
+QTextEdit,
+QLineEdit,
+QSpinBox,
+QDoubleSpinBox,
+QComboBox {
+    background-color: #ffffff;
+    color: #1f2937;
+    border: 1px solid #cfd8e3;
+    border-radius: 3px;
+}
+QTextEdit {
+    padding: 5px;
+}
+QLineEdit,
+QSpinBox,
+QDoubleSpinBox,
+QComboBox {
+    min-height: 22px;
+    padding: 2px 6px;
+}
+QLineEdit:focus,
+QSpinBox:focus,
+QDoubleSpinBox:focus,
+QComboBox:focus,
+QTextEdit:focus {
+    border: 1px solid #5b8cc9;
+}
+QComboBox::drop-down {
+    width: 18px;
+    border: none;
+}
+
+/* ALL buttons unified to play style (slightly lighter) */
+QPushButton {
+    background-color: #178a82;
+    color: #f8fafc;
+    border: 1px solid #14736d;
+    border-radius: 6px;
+    padding: 3px 10px;
+    min-height: 22px;
+    font-size: 11px;
+    font-weight: 600;
+}
+QPushButton:hover {
+    background-color: #1aa097;
+    border-color: #168982;
+}
+QPushButton:pressed {
+    background-color: #136e68;
+    border-color: #105a55;
+}
+QPushButton:disabled {
+    background-color: #8aa8a5;
+    color: #e5e7eb;
+    border-color: #7c9a97;
+}
+
+/* Keep transport compact but same style */
+QPushButton#jumpstartButton,
+QPushButton#jumpBehindButton,
+QPushButton#playButton,
+QPushButton#jumpAheadButton,
+QPushButton#jumpEndButton {
+    min-width: 38px;
+    max-width: 44px;
+    min-height: 24px;
+    max-height: 24px;
+    padding: 0px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Optional: play a touch darker than others */
+QPushButton#playButton {
+    background-color: #0f766e;
+    border-color: #0d5f59;
+}
+QPushButton#playButton:hover {
+    background-color: #11867d;
+}
+QPushButton#playButton:pressed {
+    background-color: #0c615b;
+}
+
+/* Sliders */
+QSlider::groove:horizontal {
+    height: 4px;
+    background: #d3dce7;
+    border-radius: 2px;
+}
+QSlider::handle:horizontal {
+    width: 10px;
+    margin: -4px 0;
+    background: #6b8fb6;
+    border: 1px solid #587da6;
+    border-radius: 2px;
+}
+QSlider::sub-page:horizontal {
+    background: #aac0d9;
+    border-radius: 2px;
+}
+
+QSlider::groove:vertical {
+    width: 4px;
+    background: #d3dce7;
+    border-radius: 2px;
+}
+QSlider::handle:vertical {
+    height: 10px;
+    margin: 0 -4px;
+    background: #6b8fb6;
+    border: 1px solid #587da6;
+    border-radius: 2px;
+}
+QSlider::sub-page:vertical {
+    background: #aac0d9;
+    border-radius: 2px;
+}
+
+/* Audio slider contrast on dark box */
+QGroupBox#audioBox QSlider::groove:horizontal,
+QGroupBox#audioBox QSlider::groove:vertical {
+    background: #3a4658;
+}
+QGroupBox#audioBox QSlider::sub-page:horizontal,
+QGroupBox#audioBox QSlider::sub-page:vertical {
+    background: #6b8fb6;
+}
+QGroupBox#audioBox QSlider::handle:horizontal,
+QGroupBox#audioBox QSlider::handle:vertical {
+    background: #c7d3e2;
+    border: 1px solid #9eb2c9;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1,0">
+    <item>
+     <widget class="QWidget" name="sideBar" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>260</width>
+        <height>0</height>
+       </size>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="participantsLabel">
+         <property name="text">
+          <string>Participants</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListWidget" name="participantsSection"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="sessionsLabel">
+         <property name="text">
+          <string>Sessions</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListWidget" name="sessionSection"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="swallowLabel">
+         <property name="text">
+          <string>Swallows</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListWidget" name="swallowSection"/>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>MetaData</string>
+         </property>
+         <layout class="QFormLayout" name="formLayout_2">
+          <item row="0" column="0">
+           <widget class="QLabel" name="ageLabel">
+            <property name="text">
+             <string>Age (months)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="ageValueLabel">
+            <property name="text">
+             <string>N/A</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="sexLabel">
+            <property name="text">
+             <string>Sex</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="sexValueLabel">
+            <property name="text">
+             <string>N/A</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="diagnosisLabel">
+            <property name="text">
+             <string>Diagnosis</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLabel" name="dxValueLabel">
+            <property name="text">
+             <string>N/A</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="drinkingLabel">
+            <property name="text">
+             <string>Drinking Method</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLabel" name="methodValueLabel">
+            <property name="text">
+             <string>N/A</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="midFrame" native="true">
+      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0,0,0">
+       <item>
+        <widget class="QGroupBox" name="waveFormBox">
+         <property name="title">
+          <string>Waveform</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="waveformLabel">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="waveformZoomSlider">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="sliderPosition">
+             <number>50</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="audioBox">
+         <property name="contextMenuPolicy">
+          <enum>Qt::DefaultContextMenu</enum>
+         </property>
+         <property name="title">
+          <string>Audio Playback</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QSlider" name="volumeSlider">
+            <property name="sliderPosition">
+             <number>50</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="jumpstartButton">
+            <property name="text">
+             <string>|⏴</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="playButton">
+            <property name="text">
+             <string>▶</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="jumpEndButton">
+            <property name="text">
+             <string>⏵|</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSlider" name="timeLineScrollBar">
+         <property name="maximum">
+          <number>1000</number>
+         </property>
+         <property name="pageStep">
+          <number>50</number>
+         </property>
+         <property name="value">
+          <number>0</number>
+         </property>
+         <property name="sliderPosition">
+          <number>0</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="spectrogramBox">
+         <property name="title">
+          <string>Spectrogram</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="spectroGramLabel">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="spectrogramZoomSlider">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="sliderPosition">
+             <number>50</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="annotationBox">
+         <property name="title">
+          <string>Annotation Panel</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="1" column="2">
+           <widget class="QPushButton" name="saveAnnotationButton">
+            <property name="text">
+             <string>Save </string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" rowspan="2">
+           <widget class="QTextEdit" name="annotationText"/>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="parameterBox">
+      <property name="title">
+       <string>Parameter Adjustment</string>
+      </property>
+      <layout class="QFormLayout" name="formLayout">
+       <property name="horizontalSpacing">
+        <number>4</number>
+       </property>
+       <property name="verticalSpacing">
+        <number>13</number>
+       </property>
+       <property name="leftMargin">
+        <number>4</number>
+       </property>
+       <property name="topMargin">
+        <number>8</number>
+       </property>
+       <property name="rightMargin">
+        <number>4</number>
+       </property>
+       <property name="bottomMargin">
+        <number>8</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QLabel" name="windowLengthLabel">
+         <property name="text">
+          <string>Window Length (ms)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="hopsizeLabel">
+         <property name="text">
+          <string>Hop Size (ms)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="windowTypeLabel">
+         <property name="text">
+          <string>Window Type</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="fftsizeLabel">
+         <property name="text">
+          <string>FFT Size</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="frequencyMaxLabel">
+         <property name="text">
+          <string>Frequency Range Max (Hz)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0">
+        <widget class="QLabel" name="frequencyMinLabel">
+         <property name="text">
+          <string>Frequency Range Min (Hz)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="0">
+        <widget class="QLabel" name="dynamicRangeLabel">
+         <property name="text">
+          <string>Dynamic Range (dB)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="0">
+        <widget class="QLabel" name="colormapLabel">
+         <property name="text">
+          <string>Colormap</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="0" colspan="2">
+        <widget class="QSlider" name="drSlider">
+         <property name="minimum">
+          <number>10</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+         <property name="value">
+          <number>80</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="16" column="0" colspan="2">
+        <widget class="QPushButton" name="saveAnnotationsButton">
+         <property name="text">
+          <string>Save</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QSpinBox" name="windowLengthBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>90</width>
+           <height>28</height>
+          </size>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>200</number>
+         </property>
+         <property name="value">
+          <number>30</number>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QSpinBox" name="hopsizeBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>90</width>
+           <height>28</height>
+          </size>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+         <property name="value">
+          <number>2</number>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="2">
+        <widget class="QComboBox" name="windowTypeBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>90</width>
+           <height>28</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0" colspan="2">
+        <widget class="QComboBox" name="fftsizeBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>90</width>
+           <height>28</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0" colspan="2">
+        <widget class="QSpinBox" name="frequencyRangeMaxBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>90</width>
+           <height>28</height>
+          </size>
+         </property>
+         <property name="maximum">
+          <number>8000</number>
+         </property>
+         <property name="value">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="0" colspan="2">
+        <widget class="QSpinBox" name="frequencyRangeMinBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>90</width>
+           <height>28</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="15" column="0" colspan="2">
+        <widget class="QComboBox" name="colormapBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>90</width>
+           <height>28</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="17" column="0" colspan="2">
+        <widget class="QPushButton" name="resetSpectrogramParametersButton">
+         <property name="text">
+          <string>Reset to Defaults</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1550</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionExport_Data"/>
+    <addaction name="actionImport_Data"/>
+    <addaction name="actionOpen_Project"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionExport_Data">
+   <property name="text">
+    <string>Export Project</string>
+   </property>
+  </action>
+  <action name="actionImport_Data">
+   <property name="text">
+    <string>Import Data</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="text">
+    <string>Settings</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionOpen_Project">
+   <property name="text">
+    <string>Open Project</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

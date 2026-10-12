@@ -1,0 +1,12 @@
+PyQt6
+pyqtgraph
+numpy
+scipy>=1.12
+pandas
+openpyxl
+xlrd
+SQLAlchemy
+fastapi
+uvicorn
+requests
+matplotlib
